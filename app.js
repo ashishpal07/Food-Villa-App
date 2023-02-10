@@ -2176,9 +2176,9 @@ const restaurentList = [
       }
 ]
 
-const ReastaurentCart = ({restaurent}) => {
+const ReastaurentCart = ({name, cuisines, avgRating, cloudinaryImageId}) => {
     // console.log(restaurent.data);
-    const  {name, cuisines, avgRating, cloudinaryImageId } = restaurent.data;
+    // const  {name, cuisines, avgRating, cloudinaryImageId } = restaurent.data;
     return (
         <div className="card">
             <img alt="card image" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId} />
@@ -2193,13 +2193,11 @@ const ReastaurentCart = ({restaurent}) => {
 const Body = () => {
     return (
         <div className="restaurent-list">
-            <ReastaurentCart restaurent={restaurentList[0]} />
-            <ReastaurentCart restaurent={restaurentList[1]} />
-            <ReastaurentCart restaurent={restaurentList[2]} />
-            <ReastaurentCart restaurent={restaurentList[3]} />
-            <ReastaurentCart restaurent={restaurentList[4]} />
-            <ReastaurentCart restaurent={restaurentList[5]} />
-            <ReastaurentCart restaurent={restaurentList[6]} />
+            {
+                restaurentList.map((restaurent) => {
+                    return <ReastaurentCart {...restaurent.data} key={restaurent.data.id} />
+                })
+            }
         </div>
     );
 };
