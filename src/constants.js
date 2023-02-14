@@ -1,54 +1,7 @@
-import React from "react";
-import ReactDom, {createRoot} from "react-dom/client"
 
-/**
- * Header
- *  - Logo(Left Side)
- *  - Nav Items(Right Side)
- *  - Cart
- * Body
- *  - Search Bar
- *  - RestaurentList
- *    - ReastaurentCart
- *      - Image
- *      - Name
- *      - Rating
- *      - Cusines
- * Footer
- *  - Links
- *  - Copyrights
- */
+export const IMG_CND_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-
-/**
- * <React.Fragment></React.Fragment> == <></>
- */
- 
-
-const Title = () => (
-    <a href="/">
-    <img 
-    className="logo"
-    alt="restaurent logo"
-    src="https://yt3.googleusercontent.com/ytc/AL5GRJXudT76175T4x4n7eslWM1YkgNLHDSSqfXGoadl=s900-c-k-c0x00ffffff-no-rj" />
-    </a>
-);
-
-const HeaderComponent = () => (
-    <div className="header">
-        <Title />
-        <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Cart</li>
-            </ul>
-        </div>
-    </div>
-);
-
-const restaurentList = [
+export const restaurentList = [
     {
         "type": "restaurant",
         "data": {
@@ -2174,51 +2127,4 @@ const restaurentList = [
         },
         "subtype": "basic"
       }
-]
-
-const ReastaurentCart = ({name, cuisines, avgRating, cloudinaryImageId}) => {
-    // console.log(restaurent.data);
-    // const  {name, cuisines, avgRating, cloudinaryImageId } = restaurent.data;
-    return (
-        <div className="card">
-            <img alt="card image" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId} />
-            <h2>{name}</h2>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRating} star</h4>
-        </div>
-    )
-}
-
-
-const Body = () => {
-    return (
-        <div className="restaurent-list">
-            {
-                restaurentList.map((restaurent) => {
-                    return <ReastaurentCart {...restaurent.data} key={restaurent.data.id} />
-                })
-            }
-        </div>
-    );
-};
-
-const Footer = () => {
-    return (
-        <h4>Footer</h4>
-    );
-};
-
-const AppLayOut = () => {
-    return (
-        <React.Fragment>
-            <HeaderComponent />
-            <Body />
-            <Footer />
-        </React.Fragment>
-    );
-};
-
-
-const root = ReactDom.createRoot(document.getElementById("root"));
-
-root.render(<AppLayOut />);
+];
